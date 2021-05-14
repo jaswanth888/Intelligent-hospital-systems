@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .dropdown-item:active {
+        color: #fff;
+        text-decoration: none;
+        background-color:#0d6efd;
+      }
+      @media (min-width: 992px){
+	.dropdown-menu .dropdown-toggle:after{
+		border-top: .3em solid transparent;
+	    border-right: 0;
+	    border-bottom: .3em solid transparent;
+	    border-left: .3em solid;
+	}
+	.dropdown-menu .dropdown-menu{
+		margin-left:0; margin-right: 0;
+	}
+	.dropdown-menu li{
+		position: relative;
+	}
+	.nav-item .submenu{ 
+		display: none;
+		position: absolute;
+		left:100%; top:-7px;
+	}
+	.nav-item .submenu-left{ 
+		right:100%; left:auto;
+	}
+	.dropdown-menu > li:hover{ background-color: #f1f1f1 }
+	.dropdown-menu > li:hover > .submenu{
+		display: block;
+	}
+}
+    </style>
+    <script>// Prevent closing from click inside dropdown
+      $(document).on('click', '.dropdown-menu', function (e) {
+        e.stopPropagation();
+      });
+      
+      // make it as accordion for smaller screens
+      if ($(window).width() < 992) {
+        $('.dropdown-menu a').click(function(e){
+          e.preventDefault();
+            if($(this).next('.submenu').length){
+              $(this).next('.submenu').toggle();
+            }
+            $('.dropdown').on('hide.bs.dropdown', function () {
+           $(this).find('.submenu').hide();
+        })
+        });
+      }
+      </script>
+     <script>// Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        'use strict'
+      
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+      
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+          .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+      
+              form.classList.add('was-validated')
+            }, false)
+          })
+      })()</script>
+    <title>Care & Cure</title>
+  </head>
+  <body>
+    
+    
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Care & Cure</a>
+        
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Hospitals & Doctors
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item dropdown-toggle" href="#">Apollo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <ul class="submenu dropdown-menu">
+                    <li><a class="dropdown-item dropdown-toggle" href=""> Cardiology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href=""> Orthopedic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href="">Nuerology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href="">Urology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item dropdown-toggle" href="#">Narayana&nbsp;&nbsp;&nbsp;</a>
+                  <ul class="submenu dropdown-menu">
+                    <li><a class="dropdown-item dropdown-toggle" href=""> Cardiology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href=""> Orthopedic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href="">Nuerology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href="">Urology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item dropdown-toggle" href="#">Fortish&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <ul class="submenu dropdown-menu">
+                    <li><a class="dropdown-item dropdown-toggle" href=""> Cardiology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href=""> Orthopedic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href="">Nuerology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                    <li><a class="dropdown-item dropdown-toggle" href="">Urology&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                      <ul class="submenu dropdown-menu">
+                        <li><a class="dropdown-item" href=""> Doctor-1</a></li>
+                        <li><a class="dropdown-item" href=""> Doctor-2</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Book Appointment</a></li>
+              </ul>
+            </li> -->
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/blogpost.html">Health Blog</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutus.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact.html">Contact</a>
+            </li>
+            
+          </ul>
+
+          <ul class="navbar-nav mt-1">
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#signupModal"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-person-plus-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
+                  ></path>
+                </svg>
+                Signup
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-person-badge-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"
+                  ></path>
+                </svg>
+                Login
+              </button>
+            </li>
+            <!-- </div> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Signup Modal -->
+    <div
+      class="modal fade"
+      id="signupModal"
+      tabindex="-1"
+      aria-labelledby="signupModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupModalLabel">New User</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div
+                class="col-12 mx-auto border rounded shadow-lg p-3 mb-5 bg-white rounded"
+              >
+                <h3 align="center">Create New Account</h3>
+                <form class="row g-3 needs-validation" action="#" novalidate>
+                  <div class="form-group mt-3">
+                    <label for="firstname">First Name</label>
+                    <input
+                      required
+                      type="text"
+                      name="FirstName"
+                      id="firstname"
+                      value=""
+                      class="form-control"
+                      placeholder="Enter First Name"
+                      aria-describedby="helpId"
+                    />
+                    <div class="invalid-feedback">
+                      Please fill out this field !
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="">Last Name</label>
+                    <input
+                      type="text"
+                      name="LastName"
+                      id=""
+                      value=""
+                      class="form-control"
+                      placeholder="Enter Last Name"
+                      aria-describedby="helpId"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Please fill out this field !
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="">User Name</label>
+                    <input
+                      required
+                      type="text"
+                      name="UserName"
+                      id="username"
+                      value=""
+                      class="form-control"
+                      placeholder="Enter User Name"
+                      aria-describedby="helpId"
+                    />
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                      Please fill out this field !
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="">Email</label>
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      placeholder="Your email ID.."
+                      class="email white col-7 col-md-4 col-lg-7 ml-3 form-control"
+                      id="email"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    />
+                    <div class="invalid-feedback">
+                      Enter a valid Email Address!
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="">Phone Number</label>
+                    <input
+                      type="Phone"
+                      name="PhoneNumber"
+                      id="phonenumber"
+                      value=""
+                      class="form-control"
+                      placeholder="0123456789"
+                      aria-describedby="helpId"
+                      pattern="(0/91)?[6-9][0-9]{9}$"
+                      required
+                    />
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                      Enter a valid Phone Number
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="">Password</label>
+                    <input
+                      type="Password"
+                      class="form-control"
+                      placeholder="**********"
+                      aria-describedby="helpId"
+                      id="password"
+                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                      required
+                    />
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                      Please fill out this field.
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="">Confirm Password</label>
+                    <input
+                      type="Password"
+                      class="form-control"
+                      placeholder="Re-enter Password"
+                      aria-describedby="helpId"
+                      id="conpassword"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Please fill out this field !
+                    </div>
+                    <div class="valid-feedback"></div>
+                    </div>
+                  <div class="form-group mt-3">
+                    <button type="submit" name="submit" onsubmit="matchpassword()" class="btn btn-dark">
+                      Create Account
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Login Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Old User</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div
+                class="col-lg-12 mx-auto border rounded shadow-lg p-3 mb-5 bg-white rounded pt-4 pb-4 m-4"
+              >
+                <h3 align="center">Login</h3>
+                <form class="mt-4 mb-4 needs-validation" action="loginsucces.html" action="#" novalidate>
+                  <!-- <div class="alert alert-danger" role="alert">
+                      </div> -->
+                  <div class="form-group mt-3">
+                    <label for="">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="example@gmail.com"
+                      class="email white col-7 col-md-4 col-lg-7 ml-3 form-control"
+                      id="email"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      required
+                    />
+                    <div class="valid-feedback feedback-pos"></div>
+                    <div class="invalid-feedback feedback-pos">
+                      Please input valid email ID
+                    </div>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="">Password</label>
+                    <input
+                      required
+                      type="Password"
+                      name="Password"
+                      id=""
+                      class="form-control"
+                      placeholder="**********"
+                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                      aria-describedby="helpId"
+                    />
+                    <div class="invalid-feedback feedback-pos">
+                      Please enter correct password !
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <button type="submit" class="btn btn-dark">Login</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+        ></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="coro1.png" class="d-block w-100" alt="..." />
+          <!-- <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <button class="btn btn-danger">first</button>
+            <button class="btn btn-primary">second</button>
+            <button class="btn btn-success">third</button>
+          </div> -->
+        </div>
+        <div class="carousel-item">
+          <img src="coro2.png" class="d-block w-100" alt="..." />
+          <!-- <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+            <button class="btn btn-danger">first</button>
+            <button class="btn btn-primary">second</button>
+            <button class="btn btn-success">third</button>
+          </div> -->
+        </div>
+        <div class="carousel-item">
+          <img src="coro3.png" class="d-block w-100" alt="..." />
+          <!-- <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+            <button class="btn btn-danger">first</button>
+            <button class="btn btn-primary">second</button>
+            <button class="btn btn-success">third</button>
+          </div> -->
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleCaptions"
+        role="button"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleCaptions"
+        role="button"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+
+    <!-- BLOG SECTION -->
+
+    <div class="container mt-3">
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <div
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          >
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary">
+                <h3 class="mb-0">Winter Blues</h3></strong
+              >
+
+              <div class="mb-1 text-muted">Nov 13</div>
+              <p class="card-text mb-auto">
+                <b>What are Winter Blues?</b><br />
+                Many of us feel extremely tired and low around the time winter
+                begins. This feeling of sadness and depression is also called
+                winter blues. Winter blues or Seasonal Affective Disorder (SAD)
+                affects a large segment of the population. It is depression that
+                occurs every year during a particular season and can affect your
+                mood and well-being. It is a treatable condition, but it is
+                important to notice its triggering factors and make suitable
+                lifestyle changes.
+              </p>
+              <a href="blogpost.html" class="stretched-link"
+                >Continue reading</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          >
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success"
+                ><h3 class="mb-0">
+                  Food Problems: Is It an Allergy or Intolerance?
+                </h3></strong
+              >
+              <div class="mb-1 text-muted">Nov 11</div>
+              <p class="mb-auto">
+              Eating food is essential, as it is a nutrition source that keeps you healthy and energized. Sadly, you may find yourself getting ill after eating certain types of food. The instant reaction would be to think of allergies, but it may not be so. Your body will reject food items; it is food intolerance. There is no instant reaction when you are intolerant to some food products. You may be able to eat a small amount without any trouble.
+
+On the contrary, a food allergy may be more severe and even life threatening. 
+
+
+              </p>
+              <a href="blogpost.html" class="stretched-link"
+                >Continue reading</a
+              >
+            </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <svg
+            class="bd-placeholder-img rounded-circle"
+            width="140"
+            height="140"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 140x140"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+          <image href="d3.jpg" height="140" width="140"/>
+          </svg>
+
+          <h2>Heading</h2>
+          <p>
+            Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.
+            Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo
+            risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+            cursus magna.
+          </p>
+          <p>
+            <a class="btn btn-secondary" href="#" role="button"
+              >View details »</a
+            >
+          </p>
+        </div>
+        <!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <svg
+            class="bd-placeholder-img rounded-circle"
+            width="140"
+            height="140"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 140x140"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+          <image href="d1.jpg" height="140" width="140"/>
+            
+            
+          </svg>
+
+          <h2>Heading</h2>
+          <p>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
+            eget lacinia odio sem nec elit. Cras mattis consectetur purus sit
+            amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor
+            mauris condimentum nibh.
+          </p>
+          <p>
+            <a class="btn btn-secondary" href="#" role="button"
+              >View details »</a
+            >
+          </p>
+        </div>
+        <!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <svg
+            class="bd-placeholder-img rounded-circle"
+            width="140"
+            height="140"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: 140x140"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+          <image href="d2.jpg" height="140" width="140"/>
+          </svg>
+
+          <h2>Heading</h2>
+          <p>
+            Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
+            egestas eget quam. Vestibulum id ligula porta felis euismod semper.
+            Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+            nibh, ut fermentum massa justo sit amet risus.
+          </p>
+          <p>
+            <a class="btn btn-secondary" href="#" role="button"
+              >View details »</a
+            >
+          </p>
+        </div>
+        <!-- /.col-lg-4 -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-primary">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright © Care & Cure 2020</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js" ></script>
+    <script>
+            bootstrapValidate('#username','min:3:Enter atleast 3 characters!')
+            bootstrapValidate('#conpassword','matches:#password:Password not matched')
+            function matchPassword() {  
+              var pw1 = document.getElementById("password");  
+              var pw2 = document.getElementById("conpassword");  
+              if(pw1 != pw2)  
+              {   
+                
+              } else {  
+                  
+              }  
+            }  
+    </script>
+    <script>// Example starter JavaScript for disabling form submissions if there are invalid fields
+      (() => {
+        'use strict';
+      
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation');
+      
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach((form) => {
+          form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      })();
+      </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
